@@ -16,6 +16,9 @@
   font-size: 60% !important;
   left: 0 !important;
   word-wrap: break-word;
+  white-space: pre-wrap; /* css3 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7+ */
 }
 
 /* Default Styles */
