@@ -1,0 +1,50 @@
+/* Two Columns */
+
+.custom-left {
+  float:left;
+  width: 48%;
+  clear: both
+}
+
+.custom-right {
+  float: left;
+  width: 48%;
+  margin-left: 2%;
+}
+
+.custom-code pre {
+  font-size: 60% !important;
+  left: 0 !important;
+  word-wrap: break-word;
+}
+
+/* Default Styles */
+sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+slide {
+  box-shadow: inset 0px 0px 25px 3px rgba(55, 55, 75, 0.3);
+  -moz-box-shadow: inset 0px 0px 25px 3px rgba(55, 55, 75, 0.3);
+  -webkit-box-shadow: inset 0px 0px 25px 3px rgba(55, 55, 75, 0.3);
+}
+kbd {
+  color: #36c;
+}
+
+var {
+  color: #f96;
+}
+
+/* Title Slide Override */
+.title-slide hgroup > h1 {
+  color: darkslategray !important;
+}
+
+.title-slide hgroup > h2 {
+  color: #999 !important;
+}
+
+.title-slide {
+  background-color: #fff !important;
+}

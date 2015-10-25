@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exploring openFDA Enforcement Data in Shiny</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Exploring openFDA Enforcement Data in Shiny">
+  <meta name="author" content="Student">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/custom.slides.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/slides" 
+    src="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Exploring openFDA Enforcement Data in Shiny</h1>
+    <h2></h2>
+    <p>Student<br/>a devdataprod-33 presentation</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>openFDA Enforcement Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><a href="https://open.fda.gov/about/">openFDA</a> is an open data initiative by the U.S. Food and Drug Administration. Among the endpoints it provides is <strong>Enforcement Data</strong>, which records and classifies recalls of food products monitored by the FDA since 2012.</p>
+
+<p>Our aim will be to explore, on a per-state and national basis, the frequency of such reports over time. To that end, we have created a <a href="https://yli3.shinyapps.io/openfda-ddp33">Shiny app</a> using data compiled in 2015 October. U.S. national data is depicted below:</p>
+
+<p><img src="data:image/png;base64,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" title="plot of chunk national_plot" alt="plot of chunk national_plot" style="display: block; margin: auto;" /></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Food Product Recalls</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>According to the FDA, a recall is the most effective way of addressing a public health hazard posed by an FDA-regulated product. They are &quot;almost always&quot; voluntary, but may be suggested or even mandated in rare cases<a href="https://open.fda.gov/food/enforcement/"><sup>1</sup></a>.</p>
+
+<p>The FDA monitors and advises the recall process, and classifies cases based on the degree of the adverse health effects possible or likely to be posed<a href="http://www.fda.gov/Safety/Recalls/ucm165546.htm"><sup>2</sup></a>:</p>
+
+<ul>
+<li><strong>Class I</strong> - a potential for serious or irreversible effects.</li>
+<li><strong>Class II</strong> - a potential for temporary or reversible effects, with more serious consequences being unlikely.</li>
+<li><strong>Class III</strong> - not likely to cause adverse health consequences, but nonetheless a product in violation.</li>
+</ul>
+
+<p>When a recall occurs, the FDA classifies and publishes the incident record.</p>
+
+<p>FDA reports are published weekly at <a href="http://www.fda.gov/safety/recalls/enforcementreports/">http://www.fda.gov/safety/recalls/enforcementreports/</a>. You may subscribe to updates!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Data API</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Data is provided in JSON format via an API endpoint<a href="https://open.fda.gov/api/reference/#query-syntax"><sup>3</sup></a> that allows for <code>search</code> parameters (to isolate by state or class as required). We use the <code>count</code> parameter to generate timeseries data, in order to obtain a big picture summary of enforcement history.</p>
+
+<p><code><span>https:</span>//api.fda.gov/food/enforcement.json?<var>search</var>=<kbd>classification:%22Class%20III%22</kbd>+AND+<kbd>state:%22CA%22</kbd>&amp;<var>count</var>=<kbd>report_date</kbd></code></p>
+
+<p>We further make use of the <code>lubridate</code> package and <code>data.table</code> grammar to repackage the obtained data on a monthly basis. The goal is to visualize, for different states and classifications, the total number of recalls issued each month.</p>
+
+<p>In our app, we compile data acquired via this API in October of 2015, and explore these trends with <code>ggplot</code>. Users may select both <code>state</code> and <code>class</code>, or observe national-level data.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Visualize</h2>
+  </hgroup>
+  <article data-timings="">
+    
+
+<div>
+  <p>For demonstration, we put it all together with Class I recall data from California. Try it with your state in <a href="https://yli3.shinyapps.io/openfda-ddp33">our online Shiny app!</a></p>
+
+</div>
+
+<div class = "custom-left">
+  <p><img src="data:image/png;base64,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" alt="plot of chunk generating_code"> </p>
+
+</div>
+
+<div class = "custom-right custom-code">
+  <pre><code class="r">  # get data
+  d &lt;- as.data.table(fromJSON(&quot;https://api.fda.gov/food/enforcement.json?search=classification:%22Class%20I%22+AND+state:%22CA%22&amp;count=report_date&quot;)$results)
+
+  # format data
+  d$time &lt;- as.Date(d$time, &quot;%Y%m%d&quot;)
+  d[, month := month(time)]
+  d[, year := year(time)]
+  d &lt;- d[, .(monthlyCount = sum(count)), by = .(month, year)]
+
+  d$monthlyTime &lt;- as.Date(
+    paste(d$month, &quot;1&quot;, d$year, sep = &quot;-&quot;),
+    format = &quot;%m-%d-%Y&quot;)
+
+  # plot data
+  qplot(monthlyTime, monthlyCount, data = d, geom = &quot;line&quot;)
+</code></pre>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='openFDA Enforcement Data'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Food Product Recalls'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Data API'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Visualize'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
