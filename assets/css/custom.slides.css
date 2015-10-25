@@ -45,6 +45,11 @@ var {
 
 h2 {
   color: #357 !important;
+  font-family: calibri, sans-serif !important;
+}
+
+slide:not(.segue) h2 {
+  font-family: calibri, sans-serif !important;
 }
 /* Title Slide Override */
 .title-slide hgroup > h1 {
