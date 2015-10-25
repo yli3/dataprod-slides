@@ -115,20 +115,18 @@
 </div>
 
 <div class = "custom-right custom-code">
-  <pre><code class="r">  # get data
+  <pre><code class="r">  # Get data.
   d &lt;- as.data.table(fromJSON(&quot;https://api.fda.gov/food/enforcement.json?search=classification:%22Class%20I%22+AND+state:%22CA%22&amp;count=report_date&quot;)$results)
 
-  # format data
+  # Format data.
   d$time &lt;- as.Date(d$time, &quot;%Y%m%d&quot;)
   d[, month := month(time)]
   d[, year := year(time)]
   d &lt;- d[, .(monthlyCount = sum(count)), by = .(month, year)]
-
-  d$monthlyTime &lt;- as.Date(
-    paste(d$month, &quot;1&quot;, d$year, sep = &quot;-&quot;),
+  d$monthlyTime &lt;- as.Date(paste(d$month, &quot;1&quot;, d$year, sep = &quot;-&quot;),
     format = &quot;%m-%d-%Y&quot;)
 
-  # plot data
+  # Plot data.
   qplot(monthlyTime, monthlyCount, data = d, geom = &quot;line&quot;)
 </code></pre>
 
