@@ -21,6 +21,12 @@
   white-space: -o-pre-wrap; /* Opera 7+ */
 }
 
+code {
+  word-wrap: break-word;
+  white-space: pre-wrap; /* css3 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7+ */
+}
 /* Default Styles */
 sup {
   vertical-align: super;
